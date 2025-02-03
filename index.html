@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pedido</title>
+</head>
+<body>
+    <!-- Frase Pedido -->
+ <h1 class="pedido">Aceita namorar Comigo?</h1>
+
+ <!-- Botôes de Resposta -->
+<div class="botoes">
+    <button wm-sim>SIM</button>
+    <button wm-nao>NÃO</button>
+</div>
+
+<!-- Video que vai ser mostrado -->
+<div wm-video class="video">
+    <a href="https://www.youtube.com/watch?v=izGwDsrQ1eQ"></a>
+</div>
+
+
+<script>
+    const botaoSim = document.querySelector('[wm-sim]'); // Pega o botão 'sim'
+    const botaoNao = document.querySelector('[wm-nao]'); // Pega o botão 'não'
+    const video = document.querySelector('[wm-video] > a') // Pega o video
+
+    botaoSim.addEventListener('click', function(){ // Verifica se o botão 'sim' foi clicado
+        console.log('Botão sim clicado') // mostra no console quando o botão é clicado
+        alert('Você aceitou namorar comigo :)') // faz um alerta que o pedido foi aceito
+        open(video) // Abre o video 
+    })
+    botaoNao.addEventListener('click',function(){ // Verifica se o botão 'não' foi clicado
+        const maximo = 400 // numero maximo do numero aleatorio
+        const novaPosicao = Math.floor(Math.random() * maximo)
+        console.log('Botão clicado') // mostra no console quando o botão é clicado
+        botaoNao.style.top = novaPosicao + 'px' // posição aleatoria para cima
+        botaoNao.style.left = novaPosicao + 'px' // posição aleatoria para esquerda
+        botaoNao.style.right = novaPosicao + 'px'// posição aleatoria para direita
+    })
+</script>
+
+<style>
+    h1 {
+        margin-top: 20px; /* Dá um espaçamento do título pra parte de cima*/
+    }
+
+    .pedido {
+        text-align: center; /* Alinha o texto no centro da tela*/
+    }
+
+    .botoes {
+        text-align: center; /* Alinha os botões no centro da tela*/
+    }
+
+    .botoes [wm-sim], [wm-nao]{
+        color: #fff; /* Dá uma cor pro nome que está no botão*/
+        background-color: black; /* Dá uma cor de fundo do botão*/
+        border-radius: 10%; /* Arredonda um pouco a borda em 10%*/
+        width: 70px; /*Aumenta em 70px o botão para cima */
+        height: 30px; /*Aumenta a largura em 30px do botão */
+        cursor: pointer; /*O cursor fica apontando quando fica em cima do botão*/
+        margin-right: 100px; /*Espaçamento entre os botões para a esquerda*/
+    }
+
+    .botoes  [wm-nao] {
+        position: absolute; /*Deixa o botão em */
+        top: none; /*A posição pra cima sem inicialização */
+        bottom: none;/*A posição pra baixo sem inicialização */
+        left: 50%;/*A posição pra esquerda com inicialização no centro */
+        right: 50%;/*A posição pra direita com inicialização no centro */
+    }
+</style>
+</body>
+</html>
